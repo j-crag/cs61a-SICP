@@ -185,8 +185,7 @@ def play(
                 score0 += take_turn(num_rolls, score1, dice)
                 say = say(score0, score1)
                 extra_roll = extra_turn(score0, score1)
-            
-            
+
         if who == 1:
             num_rolls = strategy1(score1, score0)
             score1 += take_turn(num_rolls, score0, dice)
@@ -197,7 +196,9 @@ def play(
                 score1 += take_turn(num_rolls, score0, dice)
                 say = say(score0, score1)
                 extra_roll = extra_turn(score1, score0)
+
         who = other(who)
+
     return score0, score1
 
 
@@ -284,18 +285,6 @@ def announce_highest(who, last_score=0, running_high=0):
     """
     assert who == 0 or who == 1, "The who argument should indicate a player."
     # BEGIN PROBLEM 7
-    # def say(score0, score1):
-    #     curr_high = running_high
-    #     if who == 0:
-    #         current_score = score0 - last_score
-    #     else:
-    #         current_score = score1 - last_score
-    #     if current_score > curr_high:
-    #         curr_high = current_score 
-    #         print(current_score, "point(s)! The most yet for Player", who)
-
-    #     return announce_highest(who, current_score, curr_high)
-    # return say
     def say(score0, score1):
         if who == 0:
             this_roll_score = score0 - last_score
@@ -310,6 +299,7 @@ def announce_highest(who, last_score=0, running_high=0):
                 curr_high_roll = this_roll_score
                 print(curr_high_roll, "point(s)! The most yet for Player", who)
         return announce_highest(who, last_score + this_roll_score, curr_high_roll)
+
     return say
     # END PROBLEM 7
 
